@@ -1,0 +1,9 @@
+# liquid-feedback Dockerfile TODO
+
+ * expose http port 8080
+ * build image from mercurial repos
+   * track exact versions known to work (from dev site)
+ * mount db folder from an external volume 
+ * publish repo
+ * publish image on docker hub
+ * make a set of production images (e.g db, backend, frontend)

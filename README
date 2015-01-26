@@ -1,0 +1,23 @@
+# Dockerfile for Liquid Feedback
+
+[Liquid Feedback](http://liquidfeedback.org) is an open-source software, powering internet platforms for proposition development and decision making.
+
+The project's source code has a lot of dependencies and requires a lot of tedious steps to build. This Dockerfile simplifies this process and allows interested developers and organizations to quickly build and run a Liquid Feedback server using a [Docker](http://docker.io) container.
+
+## How to use
+
+To build an image go to the Dockerfile dir and do:
+
+    docker build
+    
+To fetch a pre-made image do:
+
+    docker pull pangelo/liquid-feedback
+
+To run the server do:
+
+    docker run liquid-feedback
+    
+And connect a browser to http://localhost:8080
+
+
