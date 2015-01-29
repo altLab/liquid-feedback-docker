@@ -1,5 +1,7 @@
 # liquid-feedback Dockerfile TODO
 
+ * edit config file
+ * test building image
  * expose http port 8080
  * build image from mercurial repos
    * track exact versions known to work (from dev site)
