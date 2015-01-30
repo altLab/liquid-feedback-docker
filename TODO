@@ -1,10 +1,11 @@
 # liquid-feedback Dockerfile TODO
 
- * edit config file
- * test building image
- * expose http port 8080
- * build image from mercurial repos
-   * track exact versions known to work (from dev site)
+ * fix db table permissions issue
+ * patch fastpath db access 
+ * add fastpath to config file
+ * trim disk space
+   * unused packages
+   * locale purge
  * mount db folder from an external volume 
  * publish repo
  * publish image on docker hub

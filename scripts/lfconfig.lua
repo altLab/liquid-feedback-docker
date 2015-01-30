@@ -4,17 +4,17 @@
 
 -- Name of this instance, defaults to name of config file
 -- ------------------------------------------------------------------------
-config.instance_name = "Instance name"
+config.instance_name = "Liquid Feedback Docker Instance"
 
 
 -- Information about service provider (HTML)
 -- ------------------------------------------------------------------------
-config.app_service_provider = "Snake Oil<br/>10000 Berlin<br/>Germany"
+config.app_service_provider = "Docker"
 
 
 -- A HTML formatted text the user has to accept while registering
 -- ------------------------------------------------------------------------
-config.use_terms = "<h1>Terms of Use</h1><p>Insert terms here</p>"
+config.use_terms = "<h1>Terms of Use</h1><p>Have fun</p>"
 
 
 -- Checkbox(es) the user has to accept while registering
@@ -35,12 +35,12 @@ config.use_terms_checkboxes = {
   
 -- Absolute base url of application
 -- ------------------------------------------------------------------------
-config.absolute_base_url = "http://example.com/"
+config.absolute_base_url = "http://localhost"
 
 
 -- Connection information for the LiquidFeedback database
 -- ------------------------------------------------------------------------
-config.database = { engine='postgresql', dbname='liquid_feedback' }
+config.database = { engine='postgresql', dbname='liquid_feedback', user='liquid_feedback', host='localhost', password='liquid' }
 
 
 -- Location of the rocketwiki binaries
