@@ -7,6 +7,5 @@
    * unused packages
    * locale purge
  * mount db folder from an external volume 
- * publish repo
  * publish image on docker hub
  * make a set of production images (e.g db, backend, frontend)

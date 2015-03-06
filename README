@@ -10,14 +10,8 @@ To build an image go to the Dockerfile dir and do:
 
     docker build
     
-To fetch a pre-made image do:
-
-    docker pull pangelo/liquid-feedback
-
 To run the server do:
 
     docker run liquid-feedback
     
 And connect a browser to http://localhost:8080
-
-
