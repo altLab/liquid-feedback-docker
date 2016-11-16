@@ -8,7 +8,7 @@ The project's source code has a lot of dependencies and requires a lot of tediou
 
 To build an image go to the Dockerfile dir and do:
 
-    docker build
+    docker build .
     
 To run the server do:
 
