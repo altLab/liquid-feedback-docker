@@ -47,12 +47,12 @@ WORKDIR /opt/lf/sources
 # Download sources
 #
 
-RUN hg clone -r v${LF_CORE_VERSION} http://www.public-software-group.org/mercurial/liquid_feedback_core/ ./core \
-    && hg clone -r v${LF_FEND_VERSION} http://www.public-software-group.org/mercurial/liquid_feedback_frontend/ ./frontend \
-    && hg clone -r v${LF_WMCP_VERSION} http://www.public-software-group.org/mercurial/webmcp ./webmcp
+RUN hg clone -r v${LF_CORE_VERSION} https://www.public-software-group.org/mercurial/liquid_feedback_core/ ./core \
+    && hg clone -r v${LF_FEND_VERSION} https://www.public-software-group.org/mercurial/liquid_feedback_frontend/ ./frontend \
+    && hg clone -r v${LF_WMCP_VERSION} https://www.public-software-group.org/mercurial/webmcp ./webmcp
 
-RUN curl -o moonbridge.tar.gz http://www.public-software-group.org/pub/projects/moonbridge/v${LF_MOONBRIDGE_VERSION}/moonbridge-v${LF_MOONBRIDGE_VERSION}.tar.gz \
-    && tar -xvf moonbridge.tar.gz 
+RUN curl -o moonbridge.tar.gz https://www.public-software-group.org/pub/projects/moonbridge/v${LF_MOONBRIDGE_VERSION}/moonbridge-v${LF_MOONBRIDGE_VERSION}.tar.gz \
+    && tar -xvzf moonbridge.tar.gz
 
 #
 # Build moonbridge
