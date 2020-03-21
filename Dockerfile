@@ -2,7 +2,7 @@
 # Dockerfile for liquid-feedback
 #
 
-FROM debian:jessie
+FROM debian:buster
 
 MAINTAINER Pedro Ângelo <pangelo@void.io>
 
@@ -25,7 +25,7 @@ RUN apt-get update && apt-get -y install \
         liblua5.2-0 \
         mercurial \
         postgresql \
-        postgresql-server-dev-9.4 \
+        postgresql-server-dev-11 \
         python-pip \
         pmake \
         libbsd-dev \
@@ -57,6 +57,7 @@ RUN curl -o moonbridge.tar.gz https://www.public-software-group.org/pub/projects
 #
 # Build moonbridge
 #
+
 RUN cd /opt/lf/sources/moonbridge-v${LF_MOONBRIDGE_VERSION} \
     && pmake MOONBR_LUA_PATH=/opt/lf/moonbridge/?.lua \
     && mkdir /opt/lf/moonbridge \
@@ -122,7 +123,7 @@ RUN rm -rf /opt/lf/sources \
         liblua5.2-dev \
         libpq-dev \
         mercurial \
-        postgresql-server-dev-9.4 \
+        postgresql-server-dev-11 \
         python-pip \
     && apt-get -y autoremove \
     && apt-get clean
