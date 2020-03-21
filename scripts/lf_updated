@@ -17,8 +17,8 @@ fi
 echo "${PID}" > "${PIDFILE}"
 
 while true; do
-  su -l ${LFUSER} -c 'nice /opt/lf/bin/lf_update host=${DBHOST} dbname=${DBNAME} user=${DBUSER} password=${DBPASS} 2>&1 | logger -t "lf_updated"'
-  su -l ${LFUSER} -c 'nice /opt/lf/bin/lf_update_issue_order host=${DBHOST} dbname=${DBNAME} user=${DBUSER} password=${DBPASS} 2>&1 | logger -t "lf_updated"'
-  su -l ${LFUSER} -c 'nice /opt/lf/bin/lf_update_suggestion_order host=${DBHOST} dbname=${DBNAME} user=${DBUSER} password=${DBPASS} 2>&1 | logger -t "lf_updated"'
+  su -s /bin/bash ${LFUSER} -c 'nice /opt/lf/bin/lf_update host=${DBHOST} dbname=${DBNAME} user=${DBUSER} password=${DBPASS} 2>&1 | logger -t "lf_updated"'
+  su -s /bin/bash ${LFUSER} -c 'nice /opt/lf/bin/lf_update_issue_order host=${DBHOST} dbname=${DBNAME} user=${DBUSER} password=${DBPASS} 2>&1 | logger -t "lf_updated"'
+  su -s /bin/bash ${LFUSER} -c 'nice /opt/lf/bin/lf_update_suggestion_order host=${DBHOST} dbname=${DBNAME} user=${DBUSER} password=${DBPASS} 2>&1 | logger -t "lf_updated"'
   sleep 5
 done
