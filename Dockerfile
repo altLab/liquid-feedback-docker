@@ -7,8 +7,8 @@ FROM debian:buster
 MAINTAINER Pedro Ângelo <pangelo@void.io>
 
 ENV LF_CORE_VERSION 3.2.1
-ENV LF_FEND_VERSION 3.2.1
-ENV LF_WMCP_VERSION 2.1.0
+ENV LF_FRONTEND_VERSION 3.2.1
+ENV LF_WEBMCP_VERSION 2.1.0
 ENV LF_MOONBRIDGE_VERSION 1.0.1
 
 #
@@ -47,12 +47,10 @@ WORKDIR /opt/lf/sources
 # Download sources
 #
 
-RUN hg clone -r v${LF_CORE_VERSION} http://www.public-software-group.org/mercurial/liquid_feedback_core/ ./core \
-    && hg clone -r v${LF_FEND_VERSION} http://www.public-software-group.org/mercurial/liquid_feedback_frontend/ ./frontend \
-    && hg clone -r v${LF_WMCP_VERSION} http://www.public-software-group.org/mercurial/webmcp ./webmcp
-
-RUN curl -o moonbridge.tar.gz https://www.public-software-group.org/pub/projects/moonbridge/v${LF_MOONBRIDGE_VERSION}/moonbridge-v${LF_MOONBRIDGE_VERSION}.tar.gz \
-    && tar -xvf moonbridge.tar.gz 
+RUN curl https://www.public-software-group.org/pub/projects/liquid_feedback/backend/v${LF_CORE_VERSION}/liquid_feedback_core-v${LF_CORE_VERSION}.tar.gz | tar -xvzf - \
+ && curl https://www.public-software-group.org/pub/projects/liquid_feedback/frontend/v${LF_FRONTEND_VERSION}/liquid_feedback_frontend-v${LF_FRONTEND_VERSION}.tar.gz | tar -xvzf - \
+ && curl https://www.public-software-group.org/pub/projects/webmcp/v${LF_WEBMCP_VERSION}/webmcp-v${LF_WEBMCP_VERSION}.tar.gz | tar -xvzf - \
+ && curl https://www.public-software-group.org/pub/projects/moonbridge/v${LF_MOONBRIDGE_VERSION}/moonbridge-v${LF_MOONBRIDGE_VERSION}.tar.gz | tar -xvzf -
 
 #
 # Build moonbridge
@@ -68,7 +66,7 @@ RUN cd /opt/lf/sources/moonbridge-v${LF_MOONBRIDGE_VERSION} \
 # build core
 #
 
-WORKDIR /opt/lf/sources/core
+WORKDIR /opt/lf/sources/liquid_feedback_core-v${LF_CORE_VERSION}
 
 RUN make \
     && cp lf_update lf_update_issue_order lf_update_suggestion_order /opt/lf/bin
@@ -79,7 +77,7 @@ RUN make \
 
 # COPY ./patches/webmcp_build.patch /opt/lf/sources/patches/
 
-WORKDIR /opt/lf/sources/webmcp
+WORKDIR /opt/lf/sources/webmcp-v${LF_WEBMCP_VERSION}
 
 # RUN patch -p1 -i /opt/lf/sources/patches/webmcp_build.patch \
 #     && make \
@@ -92,8 +90,8 @@ RUN make \
 
 WORKDIR /opt/lf/
 
-RUN cd /opt/lf/sources/frontend \
-    && hg archive -t files /opt/lf/frontend \
+RUN cd /opt/lf/sources/liquid_feedback_frontend-v${LF_FRONTEND_VERSION} \
+    && cp -R . /opt/lf/frontend \
     && cd /opt/lf/frontend/fastpath \
     && make \
     && chown www-data /opt/lf/frontend/tmp
@@ -109,7 +107,7 @@ RUN addgroup --system lf \
     && adduser --system --ingroup lf --no-create-home --disabled-password lf \
     && service postgresql start \
     && (su -l postgres -c "psql -f /opt/lf/sources/scripts/setup_db.sql") \
-    && (su -l postgres -c "PGPASSWORD=liquid psql -U liquid_feedback -h 127.0.0.1 -f /opt/lf/sources/core/core.sql liquid_feedback") \
+    && (su -l postgres -c "PGPASSWORD=liquid psql -U liquid_feedback -h 127.0.0.1 -f /opt/lf/sources/liquid_feedback_core-v${LF_CORE_VERSION}/core.sql liquid_feedback") \
     && (su -l postgres -c "PGPASSWORD=liquid psql -U liquid_feedback -h 127.0.0.1 -f /opt/lf/sources/scripts/config_db.sql liquid_feedback") \
     && service postgresql stop
 
