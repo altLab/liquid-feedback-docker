@@ -121,11 +121,6 @@ RUN rm -rf /opt/lf/sources \
 
 # TODO: configure mail system
 
-# # webserver config
-# COPY ./scripts/60-liquidfeedback.conf /etc/lighttpd/conf-available/
-
-# RUN ln -s /etc/lighttpd/conf-available/60-liquidfeedback.conf /etc/lighttpd/conf-enabled/60-lighttpd.conf
-
 # app config
 COPY ./scripts/lfconfig.lua /opt/lf/frontend/config/
 
