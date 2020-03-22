@@ -23,14 +23,12 @@ RUN apt-get update && apt-get -y install \
         libpq-dev \
         lua5.2 \
         liblua5.2-0 \
-        mercurial \
         postgresql \
         postgresql-server-dev-11 \
-        python-pip \
         pmake \
         libbsd-dev \
         curl \
-    && pip install markdown2
+        discount
 
 #
 # prepare file tree
@@ -120,9 +118,7 @@ RUN rm -rf /opt/lf/sources \
         build-essential \
         liblua5.2-dev \
         libpq-dev \
-        mercurial \
         postgresql-server-dev-11 \
-        python-pip \
     && apt-get -y autoremove \
     && apt-get clean
 

@@ -48,14 +48,21 @@ config.database = { host='127.0.0.1', engine='postgresql', dbname='liquid_feedba
 
 -- Location of the rocketwiki binaries
 -- ------------------------------------------------------------------------
-config.enforce_formatting_engine = "markdown2"
+config.enforce_formatting_engine = "discount"
 config.formatting_engines = {
-  { id = "markdown2",
-    name = "python-markdown2",
-    executable = "markdown2",
-    args = {'-s', 'escape', '-x', 'nofollow,wiki-tables'},
+  { id = "discount",
+    name = "discount",
+    executable = "markdown",
+    args = {'-f', 'links,fencedcode'},
     remove_images = true
   },
+--  { id = "markdown2",
+--    name = "python-markdown2",
+--    executable = "markdown2",
+--    args = {'-s', 'escape', '-x', 'nofollow,wiki-tables'},
+--    remove_images = true
+--  },
+--
 --  { id = "markdown_py",
 --    name = "Python Markdown",
 --    executable = "markdown_py",
