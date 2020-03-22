@@ -73,14 +73,7 @@ RUN make \
 # build WebMCP
 #
 
-# COPY ./patches/webmcp_build.patch /opt/lf/sources/patches/
-
 WORKDIR /opt/lf/sources/webmcp-v${LF_WEBMCP_VERSION}
-
-# RUN patch -p1 -i /opt/lf/sources/patches/webmcp_build.patch \
-#     && make \
-#     && mkdir /opt/lf/webmcp \
-#     && cp -RL framework/* /opt/lf/webmcp
 
 RUN make \
     && mkdir /opt/lf/webmcp \
