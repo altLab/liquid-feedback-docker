@@ -1,6 +1,6 @@
 # Dockerfile for Liquid Feedback
 
-[Liquid Feedback](http://liquidfeedback.org) is an open-source software, powering internet platforms for proposition development and decision making.
+[Liquid Feedback](http://liquidfeedback.org) is an [open-source application](https://www.public-software-group.org/liquid_feedback) that enables internet platforms for proposition development and decision making.
 
 The project's source code has a lot of dependencies and requires a lot of tedious steps to build. This Dockerfile simplifies this process and allows interested developers and organizations to quickly build and run a Liquid Feedback server using a [Docker](http://docker.io) container.
 
