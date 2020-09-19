@@ -12,6 +12,6 @@ To build an image go to the Dockerfile dir and do:
     
 To run the server do:
 
-    docker run liquid-feedback -p "localhost:8080:8080"
+    docker run -p 127.0.0.1:8080:8080 liquid-feedback
     
 And connect a browser to http://localhost:8080 and login with user admin and empty password
